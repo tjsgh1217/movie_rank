@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
 const port = 3000
-
 // Crawler
 const movieCrawler = require('./crawler/movieCrawler');
-
 // Model
 const { Movie } = require('./models/Movie');
+const { Drama } = require('./models/Drama');
+
+
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://seonho:a382214160@project.cas3u.mongodb.net/test?retryWrites=true&w=majority', {
@@ -16,23 +17,42 @@ mongoose.connect('mongodb+srv://seonho:a382214160@project.cas3u.mongodb.net/test
 
 
 app.get('/movie', (req, res) => {
-    Movie.find({}, 
+    Movie.find({},
         function (err, data) {
-            console.log("Data",data)
-            const movies = data.map((item)=>{
+            console.log("Data", data)
+            const movies = data.map((item) => {
                 return {
                     title: item.title,
-                    poster: item.poster
+                    poster: item.poster,
+                    country: item.country,
+                    genre: item.genre,
+                    view_age: item.view_age,
+                    running_time: item.running_time,
+                    relese_date: item.relese_date,
+                    actor: item.actor,
+                    rate: item.rate,
+                    summary: item.summary
                 }
             })
             res.json(movies)
         }
     );
-}
-)
+})
+
 app.get('/drama', (req, res) => {
-    const data = [];
-    res.json(data)
+    Drama.find({},
+        function (err, data) {
+            console.log("Data", data)
+            const drams = data.map((item) => {
+                return {
+
+
+
+
+                }
+            })
+            res.json(drams)
+        });
 })
 
 app.get('/update_movie', async (req, res) => {
@@ -42,7 +62,7 @@ app.get('/update_movie', async (req, res) => {
             success: true,
         })
     }
-    catch(e){
+    catch (e) {
         res.json({
             success: false,
             errorMessage: e
