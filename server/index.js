@@ -14,6 +14,7 @@ mongoose.connect('mongodb+srv://seonho:a382214160@project.cas3u.mongodb.net/test
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB connect...'))
     .catch(err => console.log(err))
+    
 
 
 app.get('/movie', (req, res) => {
@@ -24,6 +25,7 @@ app.get('/movie', (req, res) => {
                 return {
                     title: item.title,
                     poster: item.poster,
+                    audience: item.audience,
                     country: item.country,
                     genre: item.genre,
                     view_age: item.view_age,

@@ -8,10 +8,14 @@ const movieSchema = mongoose.Schema({
         unique: 1
     },
     poster: {
-        type: String,
+        type: String
+    },
+    audience: {
+        type: Number,
+        type: String
     },
     country: {
-        type: String,
+        type: String
     },
     genre: {
         type: String,
@@ -19,14 +23,17 @@ const movieSchema = mongoose.Schema({
     },
     view_age: {
         type: Number,
+        type: String,
         maxlength: 30
     },
     running_time: {
         type: Number,
+        type: String,
         maxlength: 10
     },
     relese_date: {
         type: Number,
+        type: String,
         maxlength: 20
     },
     actor: {
@@ -38,8 +45,9 @@ const movieSchema = mongoose.Schema({
         maxlength: 10
     },
     summary: {
+        type: Number,
         type: String,
-        maxlength: 100
+        maxlength: 300
     }
 })
 
